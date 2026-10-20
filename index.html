@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <!-- Fuentes Google (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Course JavaScript | softXcruz</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 min-h-screen antialiased selection:bg-yellow-500 selection:text-white flex flex-col transition-colors duration-300">
+
+    <!-- Header / Navbar Superior -->
+    <header class="border-b border-zinc-200 dark:border-zinc-800 bg-white/30 dark:bg-zinc-900/30 backdrop-blur sticky top-0 z-50 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-3 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="./src/img/icon-js.gif" alt="JS Icon" class="w-6 h-6 object-contain">
+                <h1 class="text-lg font-semibold text-zinc-900 dark:text-white">
+                    Course
+                    <span class="text-zinc-400 dark:text-zinc-500 text-sm font-normal">| softXcruz</span>
+                </h1>
+            </div>
+
+            <!-- Controles Derechos (Botón Theme Toggle) -->
+            <div class="flex items-center space-x-4">
+                <button 
+                    id="theme-toggle"
+                    class="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all border border-zinc-200 dark:border-zinc-700">
+                    <!-- Icono Sol -->
+                    <svg id="sun-icon" class="w-4 h-4 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <!-- Icono Luna -->
+                    <svg id="moon-icon" class="w-4 h-4 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout Principal: Sidebar Izquierdo Fijo + Contenedor Main Derecho con Scroll -->
+    <div class="flex-1 max-w-7xl w-full mx-auto grid grid-cols-1 md:grid-cols-4 min-h-[calc(100vh-67px)]">
+
+        <!-- Menú Lateral Izquierdo Fijo -->
+        <aside
+            class="md:sticky md:top-[67px] md:h-[calc(100vh-67px)] p-6 flex flex-col justify-between border-r border-zinc-200 dark:border-zinc-800 transition-colors duration-300">
+            <nav class="space-y-1">
+                <p class="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase mb-4 px-3">
+                    Secciones del Curso
+                </p>
+
+                <!-- 1. Strings Text -->
+                <a href="#section-strings"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium bg-zinc-200/80 dark:bg-zinc-800/80 text-zinc-900 dark:text-white border-l-4 border-yellow-500 transition-all shadow-sm">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 5h12M9 3v2m1 14h6m-3-2v2M4 11h16M12 9v2">
+                        </path>
+                    </svg>
+                    <span>Strings Text</span>
+                </a>
+
+                <!-- 2. Numbers -->
+                <a href="#section-numbers"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14">
+                        </path>
+                    </svg>
+                    <span>Numbers</span>
+                </a>
+
+                <!-- 3. Operators -->
+                <a href="#section-operators"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
+                        </path>
+                    </svg>
+                    <span>Operators</span>
+                </a>
+
+                <!-- 4. Booleans -->
+                <a href="#section-booleans"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                        </path>
+                    </svg>
+                    <span>Booleans</span>
+                </a>
+
+                <!-- 5. Objects -->
+                <a href="#section-objects"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4">
+                        </path>
+                    </svg>
+                    <span>Objects</span>
+                </a>
+
+                <!-- 6. Arrays -->
+                <a href="#section-arrays"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16">
+                        </path>
+                    </svg>
+                    <span>Arrays</span>
+                </a>
+
+                <!-- 7. Functions -->
+                <a href="#section-functions"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4">
+                        </path>
+                    </svg>
+                    <span>Functions</span>
+                </a>
+
+                <!-- 8. Iterators -->
+                <a href="#section-iterators"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                    <span>Iterators</span>
+                </a>
+
+                <!-- 9. Array Methods -->
+                <a href="#section-array-methods"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    <span>Array Methods</span>
+                </a>
+
+                <!-- 10. DOM -->
+                <a href="#section-dom"
+                    class="nav-link w-full flex items-center space-x-3 px-3 py-2.5 rounded-r-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-900/50 hover:text-zinc-800 dark:hover:text-zinc-200 border-l-4 border-transparent transition-all">
+                    <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                        </path>
+                    </svg>
+                    <span>DOM</span>
+                </a>
+            </nav>
+
+            <!-- Footer del Sidebar -->
+            <div class="pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-3 text-xs">
+                <!-- Indicador de Sistema Activo -->
+                <div class="flex items-center space-x-2 text-zinc-500 dark:text-zinc-400">
+                    <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span class="text-[10px] uppercase">Online</span>
+                </div>
+
+                <!-- Créditos de Autor -->
+                <div>
+                    <p class="text-zinc-400 dark:text-zinc-500 text-[11px]">Designed & Built by</p>
+                    <a href="https://github.com/softXcruz" target="_blank" rel="noopener noreferrer" 
+                    class="inline-flex items-center space-x-1.5 text-zinc-800 dark:text-zinc-200 font-semibold hover:text-yellow-600 dark:hover:text-yellow-400 transition-colors mt-0.5">
+                        <span>Marco Cruz</span>
+                        <span class="text-zinc-400 font-normal">| softXcruz</span>
+                        <!-- Icono enlace externo minimalista -->
+                        <svg class="w-3 h-3 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenedor Main Derecho (Todas las secciones en scroll vertical continuo) -->
+        <main class="md:col-span-3 p-8 bg-zinc-50 dark:bg-zinc-950 space-y-12 transition-colors duration-300">
+
+            <!-- SECCIÓN: Strings Text -->
+            <section id="section-strings" class="">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Strings Text</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Un <strong class="text-zinc-900 dark:text-white">String</strong> es un tipo de dato primitivo
+                        utilizado para representar y manipular <strong class="text-zinc-900 dark:text-white">secuencias
+                            de texto</strong>. Son inmutables; cualquier transformación genera una nueva cadena en memoria.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.length</strong>: Longitud de cadena.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.toUpperCase()</strong>: Mayúsculas.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.includes()</strong>: Búsqueda.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.trim()</strong>: Elimina espacios en blanco.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.slice(inicio, fin)</strong>: Extrae una parte de la cadena.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.replace(buscar, nuevo)</strong>: Reemplaza una subcadena por otra.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.charAt(index) / [index]</strong>: Retorna el carácter en la posición dada.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.startsWith() / .endsWith()</strong>: Comprueba el inicio o fin del texto.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.indexOf(sub)</strong>: Retorna el primer índice donde encuentra el texto.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">strings-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="string-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="string-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-zinc-100 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const texto = 'Hola JS'; console.log(texto.toUpperCase());"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="string-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="string-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Numbers -->
+            <section id="section-numbers" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Numbers</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        En JavaScript, los números se representan como tipo <strong class="text-zinc-900 dark:text-white">Number</strong> (formato flotante de 64 bits IEEE 754). Maneja tanto enteros como decimales bajo el mismo tipo de dato, e incluye valores especiales como <code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">NaN</code> e <code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">Infinity</code>.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Number.parseInt()</strong>: Convierte un string a un número entero.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Number.parseFloat()</strong>: Convierte un string a número decimal.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.toFixed(digits)</strong>: Formatea un número especificando decimales.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Number.isInteger()</strong>: Determina si el valor pasado es un entero.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Number.isNaN()</strong>: Evalúa si el valor es <code class="font-mono">NaN</code>.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Math.round() / .floor() / .ceil()</strong>: Redondeo estándar, hacia abajo o hacia arriba.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Math.random()</strong>: Genera un número pseudoaleatorio entre 0 y 1.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Math.max() / Math.min()</strong>: Devuelve el valor más grande o más pequeño.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Math.abs()</strong>: Retorna el valor absoluto de un número.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">numbers-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="number-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="number-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const precio = 49.99; console.log(Math.round(precio));"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="number-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="number-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Operators -->
+            <section id="section-operators" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Operators</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Los <strong class="text-zinc-900 dark:text-white">Operadores</strong> son símbolos o palabras clave especiales que permiten manipular valores y variables en JavaScript. Se clasifican en <strong class="text-zinc-900 dark:text-white">Aritméticos</strong>, <strong class="text-zinc-900 dark:text-white">Asignación</strong>, <strong class="text-zinc-900 dark:text-white">Comparación</strong>, <strong class="text-zinc-900 dark:text-white">Lógicos</strong> y el operador de encadenamiento opcional (<code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">?.</code>) o de fusión nula (<code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">??</code>).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Operadores -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Operadores Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">+  -  *  /  %  **</strong>: Aritméticos (Suma, resta, mult, div, módulo, potencia).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">=== vs ==</strong>: Igualdad estricta (compara tipo y valor) vs débil (coerción).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">!== vs !=</strong>: Desigualdad estricta vs débil.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">&&  ||  !</strong>: Operadores Lógicos (AND, OR, NOT).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">condicion ? a : b</strong>: Operador Ternario (Sintaxis corta de <code class="font-mono">if/else</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">+=  -=  *=  /=</strong>: Operadores de Asignación compuesta.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">??</strong>: Nullish Coalescing (Retorna el operando derecho si es <code class="font-mono">null</code> o <code class="font-mono">undefined</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">?.</strong>: Optional Chaining (Acceso seguro a propiedades sin lanzar error).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">operators-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="operators-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="operators-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const a = 10; const b = '10'; console.log(a === b);"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="operators-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="operators-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Booleans -->
+            <section id="section-booleans" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Booleans</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Un <strong class="text-zinc-900 dark:text-white">Boolean</strong> representa un valor lógico que solo puede ser <code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">true</code> o <code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">false</code>. Son la base del control de flujo en JavaScript. Los valores en JS también se evalúan como <strong class="text-zinc-900 dark:text-white">Truthy</strong> o <strong class="text-zinc-900 dark:text-white">Falsy</strong> según el contexto condicional.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Conceptos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">true / false</strong>: Los dos únicos literales booleanos primitivos.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Boolean(val)</strong>: Función global que convierte cualquier valor a booleano.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">!!val (Doble NOT)</strong>: Forma idiomática rápida para castear un valor a booleano.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Valores Falsy</strong>: <code class="font-mono">false</code>, <code class="font-mono">0</code>, <code class="font-mono">""</code>, <code class="font-mono">null</code>, <code class="font-mono">undefined</code>, <code class="font-mono">NaN</code>.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Valores Truthy</strong>: Todo lo que no sea Falsy (ej: <code class="font-mono">"0"</code>, <code class="font-mono">[]</code>, <code class="font-mono">{}</code>, números neg/pos).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">! (NOT lógico)</strong>: Invierte el valor de verdad de una expresión.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">booleans-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="booleans-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="booleans-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="console.log(Boolean('Hola'));"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="booleans-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="booleans-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Objects -->
+            <section id="section-objects" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Objects</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Un <strong class="text-zinc-900 dark:text-white">Objeto</strong> es una estructura de datos fundamental en JavaScript que almacena colecciones de pares <strong class="text-zinc-900 dark:text-white">clave-valor</strong>. A diferencia de los tipos primitivos, los objetos son estructuras de datos compuestas y mutables que se pasan por referencia en memoria.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos y Conceptos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.keys(obj)</strong>: Retorna un arreglo con las llaves del objeto.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.values(obj)</strong>: Retorna un arreglo con los valores del objeto.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.entries(obj)</strong>: Retorna pares [clave, valor] en arreglos.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.assign(target, src)</strong>: Copia propiedades de uno o más objetos.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">{ ...obj } (Spread)</strong>: Clona superficialmente un objeto.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Destructuring</strong>: Extrae propiedades directamente en variables (<code class="font-mono">const { name } = obj</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.freeze(obj)</strong>: Congela un objeto impidiendo modificaciones.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Object.seal(obj)</strong>: Previene añadir/eliminar propiedades, pero permite editar existentes.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">hasOwnProperty(key)</strong>: Verifica si posee una propiedad propia.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">objects-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="objects-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="objects-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const user = { name: 'Marco', role: 'Dev' }; console.log(Object.keys(user));"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="objects-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="objects-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Arrays -->
+            <section id="section-arrays" class="pt-8border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Arrays</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Un <strong class="text-zinc-900 dark:text-white">Array</strong> (arreglo) es una estructura de datos tipo lista utilizada para almacenar múltiples elementos en una sola variable. Los arreglos en JavaScript son redimensionables, pueden contener datos de diferentes tipos y están indexados a partir de cero (<code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">0</code>).
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos y Conceptos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.push() / .pop()</strong>: Añade o elimina un elemento al final del arreglo.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.unshift() / .shift()</strong>: Añade o elimina un elemento al inicio.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.length</strong>: Propiedad que indica la cantidad de elementos.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.includes(val)</strong>: Verifica si un elemento existe en el arreglo.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.indexOf(val)</strong>: Retorna el primer índice del elemento o <code class="font-mono">-1</code>.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.slice(start, end)</strong>: Copia una porción del arreglo sin modificar el original.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.splice(start, deleteCount)</strong>: Añade, elimina o modifica elementos in-place.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.concat() / [ ...arr ]</strong>: Combina o clona arreglos de forma limpia.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.join(sep)</strong>: Convierte un arreglo en un string uniendo sus elementos.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">arrays-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="arrays-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="arrays-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const frutas = ['Manzana', 'Pera', 'Uva']; frutas.push('Mango'); console.log(frutas);"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="arrays-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="arrays-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Functions -->
+            <section id="section-functions" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Functions</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Las <strong class="text-zinc-900 dark:text-white">Funciones</strong> son bloques de código reutilizables diseñados para realizar tareas específicas. En JavaScript, las funciones son <strong class="text-zinc-900 dark:text-white">ciudadanos de primera clase</strong> (*first-class citizens*), lo que significa que pueden asignarse a variables, pasarse como argumentos y retornar de otras funciones.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Conceptos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Function Declaration</strong>: Definición tradicional con soporte de *hoisting* (<code class="font-mono">function miFuncion() {}</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Function Expression</strong>: Asignación de función a variable (<code class="font-mono">const fn = function() {}</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Arrow Functions () => {}</strong>: Sintaxis compacta sin su propio contexto de <code class="font-mono">this</code>.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Parámetros por Defecto</strong>: Asigna valores iniciales (<code class="font-mono">function saludar(nombre = "Invitado")</code>).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Rest Parameters (...args)</strong>: Permite agrupar un número indeterminado de argumentos en un arreglo.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Callbacks</strong>: Funciones pasadas como argumentos a otras funciones para ejecutarse después.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">Closures</strong>: Capacidad de una función interna de acceder al ámbito de su función padre.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">IIFE</strong>: Funciones ejecutadas inmediatamente al definirse (<code class="font-mono">(function() {})()</code>).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">functions-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="functions-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="functions-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const sumar = (a, b) => a + b; console.log(sumar(5, 10));"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="functions-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="functions-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Iterators -->
+            <section id="section-iterators" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Iterators & Loops</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Los <strong class="text-zinc-900 dark:text-white">Iteradores y Bucles</strong> permiten repetir bloques de código o recorrer estructuras de datos (como arrays, strings u objetos) de manera eficiente. JavaScript ofrece múltiples mecanismos desde el clásico bucle <code class="text-yellow-600 dark:text-yellow-400 font-mono text-xs">for</code> hasta iteradores modernos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Conceptos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">for (let i = 0; ...)</strong>: Bucle tradicional basado en contador e índice numérico.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">for...of</strong>: Itera directamente sobre los valores de objetos iterables (Arrays, Strings).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">for...in</strong>: Itera sobre las llaves (*keys*) enumerables de un objeto.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.forEach()</strong>: Método de arrays para ejecutar una función por cada elemento.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">while / do...while</strong>: Bucles condicionales que se ejecutan mientras una expresión sea verdadera.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">break & continue</strong>: Control de flujo para salir de un bucle o saltar a la siguiente iteración.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">iterators-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="iterators-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="iterators-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const nums = [1, 2, 3]; for (let n of nums) { console.log(n * 2); }"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="iterators-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="iterators-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: Array Methods -->
+            <section id="section-array-methods" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">Array Methods (Avanzados)</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        Los <strong class="text-zinc-900 dark:text-white">Métodos de Orden Superior</strong> en arreglos permiten transformar, filtrar y reducir datos de manera declarativa y limpia, siguiendo los principios de la programación funcional sin mutar directamente los datos originales en la mayoría de los casos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.map()</strong>: Transforma cada elemento y retorna un nuevo arreglo con la misma longitud.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.filter()</strong>: Evalúa una condición y retorna un nuevo arreglo con los elementos que pasen el filtro.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.reduce()</strong>: Acumula los valores del arreglo en un único resultado (número, objeto, etc.).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.find()</strong>: Retorna el primer elemento que cumpla con la condición especificada.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.findIndex()</strong>: Retorna el índice del primer elemento que cumpla la condición.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.some() / .every()</strong>: Comprueban si al menos uno o todos los elementos cumplen una condición.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.sort()</strong>: Ordena los elementos de un arreglo (¡modifica el arreglo original!).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">array-methods-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="array-methods-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="array-methods-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const nums = [1, 2, 3, 4]; const dobles = nums.map(n => n * 2); console.log(dobles);"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="array-methods-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="array-methods-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: DOM -->
+            <section id="section-dom" class="pt-8 border-t border-zinc-200 dark:border-zinc-900">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-zinc-900 dark:text-white">DOM (Document Object Model)</h2>
+                    <p class="text-zinc-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
+                        El <strong class="text-zinc-900 dark:text-white">DOM</strong> es una interfaz de programación que representa la estructura jerárquica de un documento HTML como un árbol de nodos. JavaScript lo utiliza para leer, modificar, añadir o eliminar elementos visuales y estilos en tiempo real de una página web.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Referencia de Conceptos y Métodos -->
+                    <div class="lg:col-span-1 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4 shadow-sm space-y-4">
+                        <h3 class="text-base font-semibold text-zinc-900 dark:text-white flex items-center justify-between">
+                            <span>Métodos Clave</span>
+                            <span class="text-xs font-normal text-zinc-400">Referencia</span>
+                        </h3>
+                        <ul class="space-y-3 text-xs text-zinc-600 dark:text-zinc-300 overflow-y-auto max-h-[300px] pr-4">
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">document.getElementById()</strong>: Selecciona un elemento único por su ID.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">document.querySelector()</strong>: Selecciona el primer elemento que coincida con un selector CSS.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">document.querySelectorAll()</strong>: Retorna una lista de nodos con todos los elementos que coincidan.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.textContent / .innerHTML</strong>: Lee o modifica el contenido de texto o HTML interno.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.createElement()</strong>: Crea un nuevo elemento HTML en memoria.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.appendChild() / .remove()</strong>: Inserta o elimina nodos del documento.
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.addEventListener()</strong>: Escucha eventos del usuario (como <code class="font-mono">click</code>, <code class="font-mono">input</code>, etc.).
+                            </li>
+                            <li class="p-2 bg-zinc-50 dark:bg-zinc-950 rounded-lg border border-zinc-200 dark:border-zinc-800/80">
+                                <strong class="text-yellow-600 dark:text-yellow-400 font-mono">.classList.add/remove/toggle</strong>: Manipula clases CSS de forma dinámica.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Consola Estilo Mac (Sandbox) -->
+                    <div class="lg:col-span-2 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-md overflow-hidden flex flex-col">
+                        <!-- Barra Superior Mac -->
+                        <div class="bg-zinc-100 dark:bg-zinc-900 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
+                            </div>
+                            <span class="text-xs font-mono text-zinc-400 dark:text-zinc-500">dom-sandbox.js</span>
+                            <div></div> <!-- Espaciador -->
+                        </div>
+
+                        <!-- Cuerpo de la Consola -->
+                        <div class="p-5 space-y-4 flex-1 flex flex-col justify-between">
+                            <div class="space-y-3">
+                                <label for="dom-code-input" class="block text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                                    Escribe tu código JavaScript a mano pura aquí:
+                                </label>
+                                <!-- Editor de código / input -->
+                                <textarea id="dom-code-input" rows="7" class="w-full text-zinc-950 dark:text-white bg-zinc-100 dark:bg-zinc-950 text-xs rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-yellow-500 resize-none" placeholder="const titulo = document.querySelector('h1'); console.log(titulo ? titulo.textContent : 'No encontrado');"></textarea>
+                            </div>
+
+                            <!-- Botón de Ejecutar -->
+                            <div class="flex justify-end">
+                                <button 
+                                    id="dom-run-btn"
+                                    class="px-4 py-2 bg-zinc-950 dark:bg-white text-white hover:bg-yellow-400 dark:text-zinc-950 font-semibold text-xs rounded-lg transition-all shadow-sm flex items-center space-x-1.5"
+                                >    
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <span>Run Code</span>
+                                </button>
+                            </div>
+
+                            <!-- Pantalla de Salida / Console.log Output -->
+                            <div class="bg-zinc-100 dark:bg-zinc-950 rounded-lg p-3 border border-zinc-200 dark:border-zinc-800 font-mono text-xs text-zinc-300 min-h-[90px] flex flex-col justify-between">
+                                <div class="text-zinc-500 text-[10px] uppercase border-b border-zinc-200 dark:border-zinc-900 pb-1 mb-1">Console Output:</div>
+                                <div id="dom-console-output" class="text-blue-600 dark:text-emerald-400 whitespace-pre-wrap">Haz clic en "Run Code" para ver el resultado...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script JavaScript modular -->
+    <script type="module" src="./src/js/main.js"></script>
+    <script type="module" src="./src/js/boton.js"></script>
+</body>
+
+</html>
