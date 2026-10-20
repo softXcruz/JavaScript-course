@@ -1,54 +1,54 @@
-# JavaScript Course 
+# JavaScript Course
 
-Dashboard web modular, de estilo macOS, para dominar JavaScript: desde los tipos primitivos y los métodos avanzados hasta la manipulación del DOM. Cada sección incluye una consola interactiva donde puedes escribir y ejecutar código en tiempo real.
+A modular, macOS-inspired web dashboard for mastering JavaScript: from primitive types and advanced methods to DOM manipulation. Every section includes an interactive console where you can write and run code in real time.
 
-🔗 **Demo en vivo:** [curso-js-sxc.netlify.app](https://curso-js-sxc.netlify.app/)
+🔗 **Live demo:** [curso-js-sxc.netlify.app](https://curso-js-sxc.netlify.app/)
 
 ---
 
-## Características
+## Features
 
-- **Sandbox interactivo por sección:** escribe tu código, pulsa **Run Code** y mira el resultado en la consola virtual.
-- **Referencia rápida:** cada tema trae una explicación breve y una lista de métodos y conceptos clave.
-- **Diseño modular:** cada sección es independiente y está pensada para crecer fácilmente.
-- **Interfaz inspirada en macOS:** limpia, ordenada y agradable de usar.
-- **Sin instalación:** solo necesitas un navegador.
+- **Interactive sandbox per section:** write your code, click **Run Code**, and see the output in the virtual console.
+- **Quick reference:** each topic includes a short explanation and a list of key methods and concepts.
+- **Modular design:** every section is independent and built to grow easily.
+- **macOS-inspired interface:** clean, tidy, and pleasant to use.
+- **No installation:** all you need is a browser.
 
-## Contenido del curso
+## Course Content
 
-| # | Sección | Qué aprenderás |
-|---|---------|----------------|
-| 1 | **Strings** | Inmutabilidad, `.slice()`, `.replace()`, `.includes()`, `.trim()`, `.startsWith()`, etc. |
-| 2 | **Numbers** | Formato IEEE 754, `NaN`, `Infinity`, `parseInt`, `toFixed`, objeto `Math` |
-| 3 | **Operators** | Aritméticos, `===` vs `==`, lógicos, ternario, `??` y `?.` |
-| 4 | **Booleans** | `true`/`false`, valores *truthy* y *falsy*, `Boolean()` y `!!` |
-| 5 | **Objects** | `Object.keys/values/entries`, spread, destructuring, `freeze` y `seal` |
+| # | Section | What you'll learn |
+|---|---------|-------------------|
+| 1 | **Strings** | Immutability, `.slice()`, `.replace()`, `.includes()`, `.trim()`, `.startsWith()`, and more |
+| 2 | **Numbers** | IEEE 754 format, `NaN`, `Infinity`, `parseInt`, `toFixed`, the `Math` object |
+| 3 | **Operators** | Arithmetic, `===` vs `==`, logical, ternary, `??` and `?.` |
+| 4 | **Booleans** | `true`/`false`, *truthy* and *falsy* values, `Boolean()` and `!!` |
+| 5 | **Objects** | `Object.keys/values/entries`, spread, destructuring, `freeze` and `seal` |
 | 6 | **Arrays** | `push/pop`, `shift/unshift`, `slice`, `splice`, `concat`, `join` |
 | 7 | **Functions** | Declaration vs expression, arrow functions, rest params, callbacks, closures, IIFE |
-| 8 | **Iterators & Loops** | `for`, `for...of`, `for...in`, `forEach`, `while`, `break` y `continue` |
+| 8 | **Iterators & Loops** | `for`, `for...of`, `for...in`, `forEach`, `while`, `break` and `continue` |
 | 9 | **Array Methods** | `map`, `filter`, `reduce`, `find`, `some/every`, `sort` |
-| 10 | **DOM** | Selectores, `createElement`, `addEventListener`, `classList` |
+| 10 | **DOM** | Selectors, `createElement`, `addEventListener`, `classList` |
 
-## Uso
+## Usage
 
-1. Entra a la [demo en vivo](https://curso-js-sxc.netlify.app/).
-2. Elige una sección desde la barra de navegación.
-3. Lee la teoría y la referencia de métodos.
-4. Escribe tu propio código en el editor de la sección.
-5. Haz clic en **Run Code** y revisa el resultado en **Console Output**.
+1. Go to the [live demo](https://curso-js-sxc.netlify.app/).
+2. Pick a section from the navigation bar.
+3. Read the theory and the method reference.
+4. Write your own code in the section's editor.
+5. Click **Run Code** and check the result in **Console Output**.
 
-## Tecnologías
+## Tech Stack
 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Desplegado en [Netlify](https://www.netlify.com/)
+- Deployed on [Netlify](https://www.netlify.com/)
 
-## Contribuciones
+## Contributing
 
-¿Encontraste un error o tienes una idea para una nueva sección? Abre un [issue](https://github.com/softXcruz/JavaScript-course/issues) o envía un pull request.
+Found a bug or have an idea for a new section? Open an [issue](https://github.com/softXcruz/JavaScript-course/issues) or submit a pull request.
 
-## Autor
+## Author
 
 **Marco Cruz | softXcruz**
 [github.com/softXcruz](https://github.com/softXcruz)
