@@ -1,4 +1,4 @@
-# JavaScript Course & Interactive Sandbox
+# JavaScript Course 
 
 Dashboard web modular, de estilo macOS, para dominar JavaScript: desde los tipos primitivos y los métodos avanzados hasta la manipulación del DOM. Cada sección incluye una consola interactiva donde puedes escribir y ejecutar código en tiempo real.
 
